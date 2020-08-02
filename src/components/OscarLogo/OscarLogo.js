@@ -8,6 +8,9 @@ const LogoContainer = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  left: 10rem;
+  top: 5rem;
 `;
 
 class OscarLogo extends Component {
@@ -25,7 +28,7 @@ class OscarLogo extends Component {
   }
 
   repeat() {
-    //this.forceUpdate();
+    this.forceUpdate();
   }
 
   render() {
@@ -34,7 +37,7 @@ class OscarLogo extends Component {
       <LogoContainer>
         <svg width="250" viewBox="0 -7 160 50">
           <Gradient id="gradient-dashoffset" />
-          <g fill="rgba(0,0,0, .1)" stroke="url(#gradient-dashoffset)" strokeWidth="0.5">
+          <g fill="rgba(0,0,0, .1)" stroke="url(#gradient-dashoffset)" strokeWidth="2">
             <Spring
               // native
               reset

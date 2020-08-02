@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import { OscarLogo } from './../OscarLogo';
 import { MaterialCalculator } from './../MaterialCalculator';
+import { AddressesList } from './../AddressesList';
+import { NavBar } from './../NavBar';
 
 const OskarApp = styled.section`
   display: grid;
@@ -19,13 +22,27 @@ class App extends Component {
 
     this.state = {
       isForm: true,
+      navState: 'form',
     };
+
+    this.onNavigationClick = this.onNavigationClick.bind(this);
   }
+
+  onNavigationClick(e, navState) {
+    this.setState(() => ({
+      isForm: navState === 'form',
+      navState,
+    }));
+  }
+
   render() {
-    const { isForm } = this.state;
+    const { isForm, navState } = this.state;
+    const ComponentToRender = isForm ? <MaterialCalculator /> : <AddressesList />;
     return (
       <OskarApp>
-        <MaterialCalculator></MaterialCalculator>
+        <OscarLogo />
+        <NavBar onNavigationClick={this.onNavigationClick} navState={navState} />
+        {ComponentToRender}
       </OskarApp>
     );
   }
